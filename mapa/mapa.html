@@ -1,0 +1,74 @@
+*************************
+*** arquivo mapa.html ***
+*************************
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Blank App</title>
+
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+    
+    <script>
+     function initMap() {
+	    var lat=parseFloat(localStorage.getItem('lat'));
+	    var lon=parseFloat(localStorage.getItem('lon'));
+		
+        var uluru = {lat: lat, lng: lon};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+     }
+   </script>
+
+   <style>
+
+      #rodape{
+        position:absolute;
+        bottom:0;
+        width: 100%;
+      }
+
+      #map {
+        width: 100%;
+        height: 400px;
+        background-color: grey;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div data-role="page" id="mapa">
+
+      <div data-role="header" id="cabecalho">
+        <h1>Minha localização </h1>
+      </div>
+
+    <div data-role="main" id="conteudo" class="ui-content">
+      <div id="map"></div>
+      <button id="voltar" onclick="location.href='index.html'">Voltar</button>
+    </div>
+
+    <div data-role="footer" id="rodape">
+      <h1>Todos os direitos reservados</h1>
+    </div>
+
+  </div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJLRLLQISr8mBaJsdWvGMpKt7z5ojqymI&callback=initMap">
+    </script>
+  </body>
+</html>
